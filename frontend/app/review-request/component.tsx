@@ -7,7 +7,15 @@ export interface ReviewRequestProps {
   reviewRequest: typeof ReviewRequest;
 }
 
-const mapReviewersToLinks = rs => rs.map(r => <a className={styles['reviewer-link']} href={r.profileURL}>{r.username}</a>);
+const mapReviewersToLinks = rs => rs.map(r => (
+  <a
+    target="_blank"
+    className={styles['reviewer-link']}
+    href={r.profileURL}
+  >
+    {r.username}
+  </a>
+));
 
 export default (props: ReviewRequestProps) => (
   <div className="card mb-4">
@@ -89,17 +97,17 @@ export default (props: ReviewRequestProps) => (
           <div className="col-auto">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
-                Reviewed by
+                Requested reviewers
               </label>
               <span>
                 {mapReviewersToLinks(props.reviewRequest.reviewers)}
               </span>
             </div>
           </div>
-          <div className="col">
+          <div className="col-auto">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
-                Requested reviewers
+                Reviewed by
               </label>
               <span>
                 {mapReviewersToLinks(props.reviewRequest.reviewers)}
@@ -109,5 +117,13 @@ export default (props: ReviewRequestProps) => (
         </div>
       </li>
     </ul>
+    <div className="card-footer border-top-0 text-right">
+    <button className="btn btn-secondary btn-sm mr-2">
+        Close Review Request
+      </button>
+      <button className="btn btn-primary btn-sm">
+        Review Pull Request
+      </button>
+    </div>
   </div>
 )
