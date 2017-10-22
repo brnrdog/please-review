@@ -28,7 +28,7 @@ export default [
     ]
   },
   {
-    id: 1,
+    id: 2,
     title: 'Episode page server side integration',
     repositoryURL: 'https://github.com/mdpatrick/foundmyfitness',
     repository: 'mdpatrick/foundmyfitness',

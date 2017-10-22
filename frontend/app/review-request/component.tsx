@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Avatar from '../avatar/component';
+import ConfirmButton from '../confirm-button/component';
 
 const styles = require('./styles');
 
@@ -9,6 +10,7 @@ export interface ReviewRequestProps {
 
 const mapReviewersToLinks = rs => rs.map(r => (
   <a
+    key={r.username}
     target="_blank"
     className={styles['reviewer-link']}
     href={r.profileURL}
@@ -118,9 +120,13 @@ export default (props: ReviewRequestProps) => (
       </li>
     </ul>
     <div className="card-footer border-top-0 text-right">
-    <button className="btn btn-secondary btn-sm mr-2">
+      <ConfirmButton
+        className="btn btn-secondary btn-sm mr-2"
+        confirmMessage="Are you sure you want to close this request?"
+        modalKey={`rr-confirm-${props.reviewRequest.id}`}
+      >
         Close Review Request
-      </button>
+      </ConfirmButton>
       <button className="btn btn-primary btn-sm">
         Review Pull Request
       </button>
