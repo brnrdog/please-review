@@ -1,0 +1,21 @@
+.data-group label {
+  display: block;
+  font-size: .25rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.data-group label:hover {
+  text-decoration: none;
+}
+
+.data-group span {
+  display: block;
+  font-size: .75rem;
+}
+
+.reviewer-link {
+  margin-right: 0.5rem;
+}

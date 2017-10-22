@@ -3,10 +3,24 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
+    "@types/react": "^16.0.16",
+    "@types/react-dom": "^16.0.2",
     "babel-preset-react": "^6.24.1",
+    "bootstrap": "v4.0.0-beta.2",
     "coffeescript": "1.12.7",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-octicon": "^2.0.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-spinkit": "^3.0.0",
+    "ts-loader": "^3.0.5",
+    "typescript": "^2.5.3",
+    "webpack-merge": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "webpack-dev-server": "^2.9.3"
   }
 }
