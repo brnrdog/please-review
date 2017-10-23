@@ -1,5 +1,6 @@
 declare namespace User {
-  let profileURL: string;
-  let avatarURL: string;
+  let id: number;
+  let profileUrl: string;
+  let avatarUrl: string;
   let username: string;
 }

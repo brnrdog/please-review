@@ -5,24 +5,24 @@ export default [
     repositoryURL: 'https://github.com/mdpatrick/foundmyfitness',
     repository: 'mdpatrick/foundmyfitness',
     user: {
-      profileURL: 'https://github.com/brnrdog',
-      avatarURL: 'https://avatars0.githubusercontent.com/u/670325',
+      profileUrl: 'https://github.com/brnrdog',
+      avatarUrl: 'https://avatars0.githubusercontent.com/u/670325',
       username: 'brnrdog',
     },
     reviewers: [
       {
-        profileURL: 'https://github.com/andrezacm',
-        avatarURL: 'https://avatars1.githubusercontent.com/u/1102840',
+        profileUrl: 'https://github.com/andrezacm',
+        avatarUrl: 'https://avatars1.githubusercontent.com/u/1102840',
         username: 'andrezacm',
       },
       {
-        profileURL: 'https://github.com/gaearon',
-        avatarURL: 'https://avatars1.githubusercontent.com/u/810438',
+        profileUrl: 'https://github.com/gaearon',
+        avatarUrl: 'https://avatars1.githubusercontent.com/u/810438',
         username: 'gaeron',
       },
       {
-        profileURL: 'https://github.com/tenderlove',
-        avatarURL: 'https://avatars3.githubusercontent.com/u/3124',
+        profileUrl: 'https://github.com/tenderlove',
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/3124',
         username: 'tenderlove',
       },
     ]
@@ -33,24 +33,24 @@ export default [
     repositoryURL: 'https://github.com/mdpatrick/foundmyfitness',
     repository: 'mdpatrick/foundmyfitness',
     user: {
-      profileURL: 'https://github.com/brnrdog',
-      avatarURL: 'https://avatars0.githubusercontent.com/u/670325',
+      profileUrl: 'https://github.com/brnrdog',
+      avatarUrl: 'https://avatars0.githubusercontent.com/u/670325',
       username: 'brnrdog',
     },
     reviewers: [
       {
-        profileURL: 'https://github.com/andrezacm',
-        avatarURL: 'https://avatars1.githubusercontent.com/u/1102840',
+        profileUrl: 'https://github.com/andrezacm',
+        avatarUrl: 'https://avatars1.githubusercontent.com/u/1102840',
         username: 'andrezacm',
       },
       {
-        profileURL: 'https://github.com/gaearon',
-        avatarURL: 'https://avatars1.githubusercontent.com/u/810438',
+        profileUrl: 'https://github.com/gaearon',
+        avatarUrl: 'https://avatars1.githubusercontent.com/u/810438',
         username: 'gaeron',
       },
       {
-        profileURL: 'https://github.com/tenderlove',
-        avatarURL: 'https://avatars3.githubusercontent.com/u/3124',
+        profileUrl: 'https://github.com/tenderlove',
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/3124',
         username: 'tenderlove',
       },
     ]

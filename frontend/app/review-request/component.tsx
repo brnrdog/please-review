@@ -1,4 +1,12 @@
 import * as React from 'react';
+import {
+  RepoIcon,
+  GitCommitIcon,
+  DiffAddedIcon,
+  DiffRemovedIcon,
+  GitPullRequestIcon
+} from 'react-octicons'
+
 import Avatar from '../avatar/component';
 import ConfirmButton from '../confirm-button/component';
 
@@ -13,7 +21,7 @@ const mapReviewersToLinks = rs => rs.map(r => (
     key={r.username}
     target="_blank"
     className={styles['reviewer-link']}
-    href={r.profileURL}
+    href={r.profileUrl}
   >
     {r.username}
   </a>
@@ -22,6 +30,7 @@ const mapReviewersToLinks = rs => rs.map(r => (
 export default (props: ReviewRequestProps) => (
   <div className="card mb-4">
     <div className="card-header">
+      <GitPullRequestIcon />
       {props.reviewRequest.title}
     </div>
     <ul className="list-group list-group-flush">
@@ -30,6 +39,7 @@ export default (props: ReviewRequestProps) => (
           <div className="col-auto">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
+                <RepoIcon />
                 Repository
               </label>
               <span>
@@ -42,6 +52,7 @@ export default (props: ReviewRequestProps) => (
           <div className="col-auto">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
+                <GitCommitIcon />
                 Commits
               </label>
               <span>
@@ -52,6 +63,7 @@ export default (props: ReviewRequestProps) => (
           <div className="col-auto">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
+                <DiffAddedIcon />
                 Additions
               </label>
               <span>
@@ -64,6 +76,7 @@ export default (props: ReviewRequestProps) => (
           <div className="col-auto">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
+                <DiffRemovedIcon />
                 Deletions
               </label>
               <span>
@@ -80,7 +93,7 @@ export default (props: ReviewRequestProps) => (
           <div className="col-auto">
             <div className="row no-gutters">
               <div className="col-auto">
-                <Avatar url={props.reviewRequest.user.avatarURL} />
+                <Avatar url={props.reviewRequest.user.avatarUrl} />
               </div>
               <div className="col-auto">
                 <div className={styles['data-group']}>
@@ -88,7 +101,7 @@ export default (props: ReviewRequestProps) => (
                     Requested by
                   </label>
                   <span>
-                    <a href={props.reviewRequest.user.profileURL} target="_blank">
+                    <a href={props.reviewRequest.user.profileUrl} target="_blank">
                       {props.reviewRequest.user.username}
                     </a>
                   </span>
