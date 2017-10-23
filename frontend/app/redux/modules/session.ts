@@ -1,4 +1,4 @@
-import { Action, ActionCreator } from "redux";
+import { Action, AnyAction, ActionCreator } from "redux";
 import destroyUserCookie from "../../services/destroy-user-cookie";
 
 const CREATE = 'please-review/session/CREATE';
@@ -12,10 +12,10 @@ const initState = {
   user: null
 };
 
-export default function (state: State = initState, action: Action) : State {
+export default function (state: State = initState, action: AnyAction) : State {
   switch (action.type) {
     case CREATE:
-      return state;
+      return { ...state, user: action.payload };
     case DELETE:
       return { ...state, user: null };
     default:
@@ -23,8 +23,8 @@ export default function (state: State = initState, action: Action) : State {
   }
 }
 
-export const createSession : ActionCreator<Action> = () => {
-  return { type: CREATE };
+export const createSession : ActionCreator<Action> = (user) => {
+  return { type: CREATE, payload: user };
 };
 export const deleteSession : ActionCreator<Action> = () => {
   destroyUserCookie();

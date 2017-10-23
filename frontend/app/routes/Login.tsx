@@ -1,17 +1,18 @@
 import * as React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { MarkGithubIcon } from 'react-octicons';
-import currentUser from '../services/current-user';
 
 export interface ILoginState {
   redirected: boolean;
 }
 
-class Login extends React.Component<{}, ILoginState> {
+class Login extends React.Component<any, ILoginState> {
   render() {
     return (
       <div className="container">
-        {currentUser() && <Redirect to="/" />}
+        {this.props.user && <Redirect to="/" />}
         <div className="row justify-content-sm-center mt-5">
           <div className="col-12 col-sm-8 col-md-4">
             <form className="form-signin">
@@ -36,4 +37,8 @@ class Login extends React.Component<{}, ILoginState> {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators<any>(module, dispatch),
+});
+
+export default connect(state => state.session, mapDispatchToProps)(Login);

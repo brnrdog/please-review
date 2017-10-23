@@ -6,24 +6,34 @@ import {
 } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Home from './Home';
 import ReviewRequests from './ReviewRequests';
 import Login from './Login';
 import Navbar from '../navbar/container';
-import currentUser from "../services/current-user";
 import store from '../redux/store';
+import currentUser from '../services/current-user';
+
+import * as SessionModule from '../redux/modules/session';
 
 const history = createHistory();
 
-export default () => {
-  const onLoginPage = window.location.pathname === '/login';
+const IndexRoute = ({ session, router, createSession }) => {
+  const onLoginPage = (router.location || {}).pathname === '/login';
+  const user = currentUser();
+
+  if (user && session.user === null) {
+    createSession(user);
+  }
+
   return (
     <ConnectedRouter history={history}>
       <div>
-        {!onLoginPage && <Navbar />}
+        {session.user && <Navbar />}
         <div className="container">
-          {!currentUser() && !onLoginPage && <Redirect to="/login" />}
+          {!session.user && !onLoginPage && <Redirect to="/login" />}
           <Route exact path="/" component={Home} />
           <Route exact path="/review-requests" component={ReviewRequests} />
           <Route exact path="/login" component={Login} />
@@ -32,3 +42,9 @@ export default () => {
     </ConnectedRouter>
   )
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators<any>(SessionModule, dispatch),
+})
+
+export default connect(state => state, mapDispatchToProps)(IndexRoute);
