@@ -36,7 +36,8 @@ export default function (state: State = initState, action: AnyAction) : State {
   }
 }
 
-export const fetchRepositories : ThunkAction<any, State, null> = () => {
+export const fetchRepositories :
+ThunkAction<any, State, null> = () => {
   return dispatch => {
     axios
       .get('/api/v1/github/repositories')
@@ -50,16 +51,30 @@ export const fetchRepositories : ThunkAction<any, State, null> = () => {
   }
 }
 
-export const fetchPullRequests : ActionCreator<Action> = () => {
-  // TODO: implement this action
-  const pullRequests = [];
-  return { type: FETCH_PULL_REQUESTS, payload: pullRequests };
+export const fetchPullRequests : ThunkAction<any, State, null> = () => {
+  return (dispatch, getState) => {
+    axios
+      .get('/api/v1/github/pull_requests', {
+        params: { repository: getState().github.repository }
+      })
+      .then(response => {
+        dispatch({
+          type: FETCH_PULL_REQUESTS,
+          payload: response.data.map(pull => pull.title)
+        });
+      });
+  }
 }
 
-export const selectRepository : ActionCreator<Action> = (repository:string) => {
-  return { type: SELECT_REPOSITORY, payload: repository };
-}
+
+export const selectRepository : ActionCreator<Action> =
+  (repository: string) => {
+    return {
+      type: SELECT_REPOSITORY,
+      payload: repository,
+    };
+  }
 
 export const selectPullRequest : ActionCreator<Action> = (pull:string) => {
-  return { type: SELECT_REPOSITORY, payload: pull };
+  return { type: SELECT_PULL_REQUEST, payload: pull };
 }

@@ -2,7 +2,7 @@ class Api::V1::Github::PullRequestsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render json: client.pull_requests(repository, state: 'open')
+    render json: client.pull_requests(repository, state: 'open').map(&:attrs)
   end
 
   private
@@ -12,6 +12,6 @@ class Api::V1::Github::PullRequestsController < ApplicationController
   end
 
   def repository
-    params.permit(:repository)
+    params.permit(:repository)[:repository]
   end
 end

@@ -8,7 +8,11 @@ const mapRepositoriesToOptions = repositories => (
 
 export default ({ repositories, onRepositoryChange }) => (
   <div>
-    <select onChange={onRepositoryChange} className="form-control" id="exampleFormControlSelect1">
+    <select
+      onChange={onRepositoryChange}
+      className="form-control"
+      disabled={repositories.length === 0}
+    >
       {mapRepositoriesToOptions(repositories)}
     </select>
   </div>
