@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from "react-router-dom";
 
 import ReviewRequests from '../review-requests/component';
-import ReviewRequestCreator from '../review-request-creator/component';
+import ReviewRequestCreator from '../review-request-creator/container';
 
 export default () => (
   <div>

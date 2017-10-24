@@ -3,7 +3,7 @@ import * as React from 'react';
 import RepositorySelect from '../repository-select/container';
 import PullRequestSelect from '../pull-request-select/container';
 
-export default () => (
+export default ({ onCreateReviewRequest, pullRequest }) => (
   <div className="card">
     <div className="card-header">
       Select a Repository
@@ -20,7 +20,10 @@ export default () => (
       <PullRequestSelect />
     </div>
     <div className="card-footer">
-      <button className="btn btn-block btn-primary">
+      <button
+        onClick={onCreateReviewRequest}
+        className="btn btn-block btn-primary"
+        disabled={pullRequest === null}>
         Create Review Request
       </button>
     </div>

@@ -26,6 +26,10 @@ export default ({ pullRequests, onPullRequestChange, repository }) => {
         {repository && pullRequests.length === 0 &&
           <option disabled selected>No open pull requests found</option>
         }
+
+        {pullRequests.length > 0 &&
+          <option disabled selected>Choose one</option>
+        }
         {options}
       </select>
     </div>

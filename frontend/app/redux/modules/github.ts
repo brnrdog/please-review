@@ -28,7 +28,7 @@ export default function (state: State = initState, action: AnyAction) : State {
     case FETCH_PULL_REQUESTS:
       return { ...state, pullRequests: action.payload };
     case SELECT_REPOSITORY:
-      return { ...state, repository: action.payload };
+      return { ...state, repository: action.payload, pullRequest: null };
     case SELECT_PULL_REQUEST:
       return { ...state, pullRequest: action.payload };
     default:
