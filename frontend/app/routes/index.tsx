@@ -34,7 +34,7 @@ const IndexRoute = ({ session, router, createSession }) => {
         {session.user && <Navbar />}
         <div className="container">
           {!user && !onLoginPage && <Redirect to="/login" />}
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={ReviewRequests} />
           <Route exact path="/review-requests" component={ReviewRequests} />
           <Route exact path="/login" component={Login} />
         </div>

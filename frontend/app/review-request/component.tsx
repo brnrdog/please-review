@@ -4,7 +4,8 @@ import {
   GitCommitIcon,
   DiffAddedIcon,
   DiffRemovedIcon,
-  GitPullRequestIcon
+  GitPullRequestIcon,
+  EyeIcon
 } from 'react-octicons'
 
 import Avatar from '../avatar/component';
@@ -36,7 +37,7 @@ export default (props: ReviewRequestProps) => (
     <ul className="list-group list-group-flush">
       <li className="list-group-item">
         <div className="row">
-          <div className="col-auto">
+          <div className="col-4 col-sm-auto mb-2 mb-sm-0">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
                 <RepoIcon />
@@ -49,7 +50,18 @@ export default (props: ReviewRequestProps) => (
               </span>
             </div>
           </div>
-          <div className="col-auto">
+          <div className="col-4 col-sm-auto mb-2 mb-sm-0">
+            <div className={styles['data-group']}>
+              <label className={`text-muted`}>
+                <EyeIcon />
+                Reviews
+              </label>
+              <span>
+                <strong>4</strong>
+              </span>
+            </div>
+          </div>
+          <div className="col-4 col-sm-auto mb-2 mb-sm-0">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
                 <GitCommitIcon />
@@ -60,7 +72,7 @@ export default (props: ReviewRequestProps) => (
               </span>
             </div>
           </div>
-          <div className="col-auto">
+          <div className="col-4 col-sm-auto mb-2 mb-sm-0">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
                 <DiffAddedIcon />
@@ -73,7 +85,7 @@ export default (props: ReviewRequestProps) => (
               </span>
             </div>
           </div>
-          <div className="col-auto">
+          <div className="col-4 col-sm-auto mb-2 mb-sm-0">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
                 <DiffRemovedIcon />
