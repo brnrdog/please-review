@@ -5,7 +5,6 @@ class User < ApplicationRecord
       user.username = auth['info']['nickname']
       user.profile_url = auth['info']['urls']['GitHub']
       user.avatar_url = auth['info']['image']
-      user.token = auth['credentials']['token']
     end
   end
 end

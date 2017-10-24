@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'foreman'
 gem 'omniauth-github'
 gem 'pry-rails'
+gem 'octokit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

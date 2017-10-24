@@ -12,7 +12,9 @@ class Login extends React.Component<any, ILoginState> {
   render() {
     return (
       <div className="container">
-        {this.props.user && <Redirect to="/" />}
+        {this.props.user &&
+          <Redirect to="/" />
+        }
         <div className="row justify-content-sm-center mt-5">
           <div className="col-12 col-sm-8 col-md-4">
             <form className="form-signin">

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    session[:current_user]
+    return nil unless session[:current_user]
+    User.find(session[:current_user]['id'])
   end
 end

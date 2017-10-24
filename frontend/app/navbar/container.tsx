@@ -9,7 +9,7 @@ import Component from './component';
 
 class Container extends React.Component<any, module.State> {
   constructor(props) {
-    super(props)
+    super(props);
     this.handleLogout = this.handleLogout.bind(this);
   }
 

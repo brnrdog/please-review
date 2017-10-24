@@ -7,10 +7,14 @@ import {
   push
 } from 'react-router-redux';
 import logger from 'redux-logger'
+import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
 
-export default createStore(reducers, applyMiddleware(middleware, logger));
+export default createStore(
+  reducers,
+  applyMiddleware(thunk, middleware, logger),
+);
