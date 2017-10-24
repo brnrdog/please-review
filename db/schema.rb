@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022202502) do
+ActiveRecord::Schema.define(version: 20171024145142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "review_requests", force: :cascade do |t|
+    t.string "title"
+    t.string "repository_url"
+    t.bigint "user_id"
+    t.integer "commits"
+    t.integer "deletions"
+    t.integer "additions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "repository"
+    t.index ["user_id"], name: "index_review_requests_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "profile_url"
@@ -25,4 +38,5 @@ ActiveRecord::Schema.define(version: 20171022202502) do
     t.integer "uid"
   end
 
+  add_foreign_key "review_requests", "users"
 end

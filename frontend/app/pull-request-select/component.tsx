@@ -2,7 +2,9 @@ import * as React from 'react';
 
 const mapPullRequestsToOptions = prs => (
   prs.map(pr => (
-    <option key={pr} value={pr}>{pr}</option>
+    <option key={pr.number} value={pr.number}>
+      {pr.title}
+    </option>
   ))
 );
 

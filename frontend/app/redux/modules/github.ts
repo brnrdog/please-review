@@ -11,7 +11,7 @@ export interface State {
   readonly pullRequests: string[];
   readonly repositories: string[];
   readonly repository?: string;
-  readonly pullRequest?: string;
+  readonly pullRequest?: number;
 }
 
 const initState = {
@@ -60,7 +60,10 @@ export const fetchPullRequests : ThunkAction<any, State, null> = () => {
       .then(response => {
         dispatch({
           type: FETCH_PULL_REQUESTS,
-          payload: response.data.map(pull => pull.title)
+          payload: response.data.map(pull => ({
+            title: pull.title,
+            number: pull.number,
+          })),
         });
       });
   }
@@ -75,6 +78,6 @@ export const selectRepository : ActionCreator<Action> =
     };
   }
 
-export const selectPullRequest : ActionCreator<Action> = (pull:string) => {
+export const selectPullRequest : ActionCreator<Action> = (pull: number) => {
   return { type: SELECT_PULL_REQUEST, payload: pull };
 }

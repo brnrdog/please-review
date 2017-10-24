@@ -28,11 +28,11 @@ const mapReviewersToLinks = rs => rs.map(r => (
   </a>
 ));
 
-export default (props: ReviewRequestProps) => (
+export default ({ reviewRequest }) => (
   <div className="card mb-4">
     <div className="card-header">
       <GitPullRequestIcon />
-      {props.reviewRequest.title}
+      {reviewRequest.title}
     </div>
     <ul className="list-group list-group-flush">
       <li className="list-group-item">
@@ -44,8 +44,8 @@ export default (props: ReviewRequestProps) => (
                 Repository
               </label>
               <span>
-                <a href={props.reviewRequest.repositoryURL} target="_blank">
-                  {props.reviewRequest.repository}
+                <a href={reviewRequest.repositoryURL} target="_blank">
+                  {reviewRequest.repository}
                 </a>
               </span>
             </div>
@@ -80,7 +80,7 @@ export default (props: ReviewRequestProps) => (
               </label>
               <span>
                 <strong className="text-success">
-                  +3,753
+                  +{reviewRequest.additions}
                 </strong>
               </span>
             </div>
@@ -93,7 +93,7 @@ export default (props: ReviewRequestProps) => (
               </label>
               <span>
                 <strong className="text-danger">
-                  -978
+                  -{reviewRequest.deletions}
                 </strong>
               </span>
             </div>
@@ -105,7 +105,7 @@ export default (props: ReviewRequestProps) => (
           <div className="col-auto">
             <div className="row no-gutters">
               <div className="col-auto">
-                <Avatar url={props.reviewRequest.user.avatarUrl} />
+                <Avatar url={"https://github.com/brnrdog"} />
               </div>
               <div className="col-auto">
                 <div className={styles['data-group']}>
@@ -113,8 +113,8 @@ export default (props: ReviewRequestProps) => (
                     Requested by
                   </label>
                   <span>
-                    <a href={props.reviewRequest.user.profileUrl} target="_blank">
-                      {props.reviewRequest.user.username}
+                    <a href={"https://avatars0.githubusercontent.com/u/670325"} target="_blank">
+                      brnrdog
                     </a>
                   </span>
                 </div>
@@ -127,7 +127,7 @@ export default (props: ReviewRequestProps) => (
                 Requested reviewers
               </label>
               <span>
-                {mapReviewersToLinks(props.reviewRequest.reviewers)}
+                {mapReviewersToLinks(reviewRequest.reviewers || [])}
               </span>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default (props: ReviewRequestProps) => (
                 Reviewed by
               </label>
               <span>
-                {mapReviewersToLinks(props.reviewRequest.reviewers)}
+                {mapReviewersToLinks(reviewRequest.reviewers || [])}
               </span>
             </div>
           </div>
@@ -148,7 +148,7 @@ export default (props: ReviewRequestProps) => (
       <ConfirmButton
         className="btn btn-secondary btn-sm mr-2"
         confirmMessage="Are you sure you want to close this request?"
-        modalKey={`rr-confirm-${props.reviewRequest.id}`}
+        modalKey={`rr-confirm-${reviewRequest.id}`}
       >
         Close Review Request
       </ConfirmButton>

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import ReviewRequest from '../review-request/component';
-import reviewRequests from '../../fixtures/review-requests';
 
 const mapReviewRequestToComponents = rrs => (
   rrs.map(rr => <ReviewRequest key={rr.id} reviewRequest={rr} />)
 );
 
-export default () => (
+export default ({ reviewRequests }) => (
   <section>
     {mapReviewRequestToComponents(reviewRequests)}
   </section>

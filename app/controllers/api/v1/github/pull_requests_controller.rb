@@ -5,6 +5,10 @@ class Api::V1::Github::PullRequestsController < ApplicationController
     render json: client.pull_requests(repository, state: 'open').map(&:attrs)
   end
 
+  def show
+    # TODO: Implement this shit
+  end
+
   private
 
   def client

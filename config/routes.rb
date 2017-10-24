@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         resources :repositories, only: :index
         resources :pull_requests, only: :index
       end
+
+      resources :review_requests, only: :create
     end
   end
 

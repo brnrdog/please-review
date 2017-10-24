@@ -11,27 +11,14 @@ interface IProps {
 };
 
 class Container extends React.Component<any, any> {
-  constructor(props) {
-    super(props);
-    this.handleCreateReviewRequest = this.handleCreateReviewRequest.bind(this);
-  }
-
-  handleCreateReviewRequest() {
-    this.props.createReviewRequest(
-      this.props.repository,
-      this.props.pullRequest,
-    );
-  }
-
   render() {
     return <Component
       {...this.props}
-      onCreateReviewRequest={this.handleCreateReviewRequest}
     />
   }
 }
 
-const mapStateToProps = state => state.github;
+const mapStateToProps = state => state.reviewRequests;
 
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators<any>(module, dispatch),
