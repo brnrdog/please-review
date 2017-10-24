@@ -12,12 +12,12 @@ class Api::V1::ReviewRequestsController < ApplicationController
       r.repository_url = repo.html_url
       r.user = current_user
     end
-    render json: @review_request
+    render json: @review_request.to_json
   end
 
   def index
     @review_requests = ReviewRequest.all
-    render json: @review_requests
+    render json: @review_requests.to_json
   end
 
   private

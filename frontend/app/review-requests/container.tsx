@@ -1,20 +1,21 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Action, ActionCreator } from "redux";
+import { bindActionCreators, Action, ActionCreator } from "redux";
 
 import Component from './component';
 import * as module from '../redux/modules/review-requests';
 
-interface IProps {
-  fetchRepositories: ActionCreator<Action>,
-};
-
 class Container extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchReviewRequests();
+  }
+
   render() {
-    return <Component
-      {...this.props}
-    />
+    return <Component {...this.props} />;
   }
 }
 

@@ -20,7 +20,7 @@ export default function (state: State = initState, action: AnyAction) : State {
       const reviewRequests = fp.concat([action.payload])(state.reviewRequests);
       return { ...state, reviewRequests };
     case FETCH:
-      return { ...state };
+      return { ...state, reviewRequests: action.payload };
     default:
       return state;
   }
@@ -40,7 +40,18 @@ export const createReviewRequest : ThunkAction<any, State, null> = () => {
         payload: response.data,
       });
     });
+  }
+}
 
-
+export const fetchReviewRequests : ThunkAction<any, State, null> = () => {
+  return dispatch => {
+    axios
+      .get('api/v1/review_requests')
+      .then(response => {
+        dispatch({
+          type: FETCH,
+          payload: response.data,
+        });
+      });
   }
 }

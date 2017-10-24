@@ -7,6 +7,6 @@ const mapReviewRequestToComponents = rrs => (
 
 export default ({ reviewRequests }) => (
   <section>
-    {mapReviewRequestToComponents(reviewRequests)}
+    {mapReviewRequestToComponents(reviewRequests || [])}
   </section>
 )
