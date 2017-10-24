@@ -7,6 +7,7 @@ import {
   GitPullRequestIcon,
   EyeIcon
 } from 'react-octicons'
+import * as numeral from 'numeral';
 
 import Avatar from '../avatar/component';
 import ConfirmButton from '../confirm-button/component';
@@ -80,7 +81,7 @@ export default ({ reviewRequest }) => (
               </label>
               <span>
                 <strong className="text-success">
-                  +{reviewRequest.additions}
+                  +{numeral(reviewRequest.additions).format(0,0)}
                 </strong>
               </span>
             </div>
@@ -93,7 +94,7 @@ export default ({ reviewRequest }) => (
               </label>
               <span>
                 <strong className="text-danger">
-                  -{reviewRequest.deletions}
+                  -{numeral(reviewRequest.deletions).format(0,0)}
                 </strong>
               </span>
             </div>

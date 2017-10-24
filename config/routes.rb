@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         resources :pull_requests, only: :index
       end
 
-      resources :review_requests, only: :create
+      resources :review_requests, only: [:create, :index]
     end
   end
 
