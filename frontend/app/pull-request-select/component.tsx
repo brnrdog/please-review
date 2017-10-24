@@ -8,6 +8,10 @@ const mapPullRequestsToOptions = prs => (
 
 export default ({ pullRequests, onPullRequestChange, repository }) => {
   const options = mapPullRequestsToOptions(pullRequests);
+  const prompt = repository ?
+    (pullRequests.length > 0 ? 'Choose Pull Request' : 'No Pull Requests')
+    :
+    'Select a repository first'
 
   return (
     <div>
@@ -16,6 +20,12 @@ export default ({ pullRequests, onPullRequestChange, repository }) => {
         className="form-control"
         disabled={pullRequests.length === 0}
       >
+        {!repository &&
+          <option disabled selected>Select a repository first</option>
+        }
+        {repository && pullRequests.length === 0 &&
+          <option disabled selected>No open pull requests found</option>
+        }
         {options}
       </select>
     </div>

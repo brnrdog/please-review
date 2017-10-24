@@ -6,14 +6,21 @@ const mapRepositoriesToOptions = repositories => (
   ))
 );
 
-export default ({ repositories, onRepositoryChange }) => (
-  <div>
-    <select
-      onChange={onRepositoryChange}
-      className="form-control"
-      disabled={repositories.length === 0}
-    >
-      {mapRepositoriesToOptions(repositories)}
-    </select>
-  </div>
-)
+export default ({ repositories, onRepositoryChange }) => {
+  const prompt = repositories.length > 0 ? 'Choose one' : 'Loading...';
+
+  return (
+    <div>
+      <select
+        onChange={onRepositoryChange}
+        className="form-control"
+        disabled={repositories.length === 0}
+      >
+        <option disabled selected>
+          {prompt}
+        </option>
+        {mapRepositoriesToOptions(repositories)}
+      </select>
+    </div>
+  );
+}
