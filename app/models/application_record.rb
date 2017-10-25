@@ -1,9 +1,9 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def to_json
-    as_json.transform_keys do |key|
+  def to_camel_case_json(args)
+    as_json(args).deep_transform_keys do |key|
       ActiveSupport::Inflector.camelize(key, false)
-    end.to_json
+    end
   end
 end

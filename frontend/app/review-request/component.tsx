@@ -14,7 +14,7 @@ import ConfirmButton from '../confirm-button/component';
 
 const styles = require('./styles');
 
-export interface ReviewRequestProps {
+export interface IProps {
   reviewRequest: typeof ReviewRequest;
 }
 
@@ -29,7 +29,7 @@ const mapReviewersToLinks = rs => rs.map(r => (
   </a>
 ));
 
-export default ({ reviewRequest }) => (
+export default ({ reviewRequest }: IProps) => (
   <div className="card mb-4">
     <div className="card-header">
       <GitPullRequestIcon />
@@ -45,7 +45,7 @@ export default ({ reviewRequest }) => (
                 Repository
               </label>
               <span>
-                <a href={reviewRequest.repositoryURL} target="_blank">
+                <a href={reviewRequest.repositoryUrl} target="_blank">
                   {reviewRequest.repository}
                 </a>
               </span>
@@ -106,7 +106,7 @@ export default ({ reviewRequest }) => (
           <div className="col-auto">
             <div className="row no-gutters">
               <div className="col-auto">
-                <Avatar url={"https://github.com/brnrdog"} />
+                <Avatar url={reviewRequest.user.avatarUrl} />
               </div>
               <div className="col-auto">
                 <div className={styles['data-group']}>
@@ -115,7 +115,7 @@ export default ({ reviewRequest }) => (
                   </label>
                   <span>
                     <a href={"https://avatars0.githubusercontent.com/u/670325"} target="_blank">
-                      brnrdog
+                      {reviewRequest.user.username}
                     </a>
                   </span>
                 </div>

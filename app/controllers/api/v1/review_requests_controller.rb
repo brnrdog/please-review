@@ -12,12 +12,15 @@ class Api::V1::ReviewRequestsController < ApplicationController
       r.repository_url = repo.html_url
       r.user = current_user
     end
-    render json: @review_request.to_json
+    render json: @review_request.to_camel_case_json, include: :user
   end
 
   def index
     @review_requests = ReviewRequest.all
-    render json: @review_requests.to_json
+    response = @review_requests.map do |rr|
+      rr.to_camel_case_json(include: :user)
+    end
+    render json: response
   end
 
   private
