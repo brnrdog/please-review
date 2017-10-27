@@ -10,9 +10,12 @@ class Api::V1::ReviewRequestsController < ApplicationController
       r.commits = pull_request.commits
       r.repository = repo.full_name
       r.repository_url = repo.html_url
+      r.reviews = pull_request.review_comments
+      r.changed_files = pull_request.changed_files
+      r.languages = client.languages(repo.full_name).to_attrs.keys.join(', ')
       r.user = current_user
     end
-    render json: @review_request.to_camel_case_json, include: :user
+    render json: @review_request.to_camel_case_json(include: :user)
   end
 
   def index
@@ -21,6 +24,10 @@ class Api::V1::ReviewRequestsController < ApplicationController
       rr.to_camel_case_json(include: :user)
     end
     render json: response
+  end
+
+  def close
+    @review_request = ReviewRequest.find(params[:id])
   end
 
   private

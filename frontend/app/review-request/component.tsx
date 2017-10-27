@@ -58,7 +58,7 @@ export default ({ reviewRequest }: IProps) => (
                 Reviews
               </label>
               <span>
-                <strong>4</strong>
+                <strong>{reviewRequest.reviews}</strong>
               </span>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default ({ reviewRequest }: IProps) => (
                 Commits
               </label>
               <span>
-                <strong>30</strong>
+                <strong>{reviewRequest.commits}</strong>
               </span>
             </div>
           </div>
@@ -125,10 +125,10 @@ export default ({ reviewRequest }: IProps) => (
           <div className="col-auto">
             <div className={styles['data-group']}>
               <label className={`text-muted`}>
-                Requested reviewers
+                Repository Languages
               </label>
               <span>
-                {mapReviewersToLinks(reviewRequest.reviewers || [])}
+                {reviewRequest.languages}
               </span>
             </div>
           </div>
