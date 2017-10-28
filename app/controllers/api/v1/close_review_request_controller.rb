@@ -4,7 +4,7 @@ class Api::V1::CloseReviewRequestController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def update
-    @review_request.update(status: 'closed')
+    @review_request.update(status: 1)
     render json: @review_request.to_camel_case_json
   end
 
