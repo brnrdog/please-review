@@ -66,7 +66,7 @@ export const fetchReviewRequests : ThunkAction<any, State, null> = () => {
 export const closeReviewRequest : ThunkAction<any, State, null> = (id) => {
   return dispatch => {
     axios
-      .put(`/api/v1/github/close_review_request/${id}`)
+      .put(`/api/v1/close_review_request/${id}`)
       .then(response => {
         dispatch({
           type: CLOSE,
