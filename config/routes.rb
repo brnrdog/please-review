@@ -6,10 +6,10 @@ Rails.application.routes.draw do
       namespace :github do
         resources :repositories, only: :index
         resources :pull_requests, only: :index
-        resources :close_review_request, only: :update
       end
 
       resources :review_requests, only: [:create, :index]
+      resources :close_review_request, only: :update
     end
   end
 
