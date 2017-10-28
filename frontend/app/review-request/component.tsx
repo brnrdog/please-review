@@ -16,6 +16,7 @@ const styles = require('./styles');
 
 export interface IProps {
   reviewRequest: typeof ReviewRequest;
+  onCloseReviewRequest: () => void;
 }
 
 const mapReviewersToLinks = rs => rs.map(r => (
@@ -29,7 +30,7 @@ const mapReviewersToLinks = rs => rs.map(r => (
   </a>
 ));
 
-export default ({ reviewRequest }: IProps) => (
+export default ({ reviewRequest, onCloseReviewRequest }: IProps) => (
   <div className="card mb-4">
     <div className="card-header">
       <GitPullRequestIcon />
@@ -149,6 +150,7 @@ export default ({ reviewRequest }: IProps) => (
       <ConfirmButton
         className="btn btn-secondary btn-sm mr-2"
         confirmMessage="Are you sure you want to close this request?"
+        onConfirm={onCloseReviewRequest}
         modalKey={`rr-confirm-${reviewRequest.id}`}
       >
         Close Review Request

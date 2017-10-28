@@ -21,17 +21,11 @@ export default ({ pullRequests, onPullRequestChange, repository }) => {
         onChange={onPullRequestChange}
         className="form-control"
         disabled={pullRequests.length === 0}
+        defaultValue={prompt}
       >
-        {!repository &&
-          <option disabled selected>Select a repository first</option>
-        }
-        {repository && pullRequests.length === 0 &&
-          <option disabled selected>No open pull requests found</option>
-        }
-
-        {pullRequests.length > 0 &&
-          <option disabled selected>Choose one</option>
-        }
+        <option value={prompt} disabled>
+          {prompt}
+        </option>
         {options}
       </select>
     </div>

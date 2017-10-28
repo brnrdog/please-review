@@ -5,6 +5,7 @@ import * as fp from 'lodash/fp';
 
 const CREATE = 'please-review/review-request/CREATE';
 const FETCH = 'please-review/review-request/FETCH';
+const CLOSE = 'please-review/review-request/CLOSE';
 
 export interface State {
   readonly reviewRequests: typeof ReviewRequest[];
@@ -21,6 +22,12 @@ export default function (state: State = initState, action: AnyAction) : State {
       return { ...state, reviewRequests };
     case FETCH:
       return { ...state, reviewRequests: action.payload };
+    case CLOSE:
+      const requests = state.reviewRequests.filter(
+        request => request.id !== action.payload
+      );
+
+      return { ...state, reviewRequests: requests }
     default:
       return state;
   }
@@ -51,6 +58,19 @@ export const fetchReviewRequests : ThunkAction<any, State, null> = () => {
         dispatch({
           type: FETCH,
           payload: response.data,
+        });
+      });
+  }
+}
+
+export const closeReviewRequest : ThunkAction<any, State, null> = (id) => {
+  return dispatch => {
+    axios
+      .put(`/api/v1/github/close_review_request/${id}`)
+      .then(response => {
+        dispatch({
+          type: CLOSE,
+          payload: id,
         });
       });
   }

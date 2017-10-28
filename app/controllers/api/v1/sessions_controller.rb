@@ -4,7 +4,7 @@ class Api::V1::SessionsController < ApplicationController
     @user = User.find_or_create_from_auth_hash(auth_hash)
     @user.update(token: auth_hash['credentials']['token'])
     session[:current_user] = @user
-    cookies[:current_user] = @user.to_json
+    cookies[:current_user] = @user.to_camel_case_json.to_json
     redirect_to root_path
   end
 

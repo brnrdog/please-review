@@ -19,15 +19,11 @@ class Api::V1::ReviewRequestsController < ApplicationController
   end
 
   def index
-    @review_requests = ReviewRequest.all
+    @review_requests = ReviewRequest.where(status: 0)
     response = @review_requests.map do |rr|
       rr.to_camel_case_json(include: :user)
     end
     render json: response
-  end
-
-  def close
-    @review_request = ReviewRequest.find(params[:id])
   end
 
   private

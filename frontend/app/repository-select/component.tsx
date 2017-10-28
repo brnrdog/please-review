@@ -15,8 +15,9 @@ export default ({ repositories, onRepositoryChange }) => {
         onChange={onRepositoryChange}
         className="form-control"
         disabled={repositories.length === 0}
+        defaultValue={prompt}
       >
-        <option disabled selected>
+        <option value={prompt} disabled>
           {prompt}
         </option>
         {mapRepositoriesToOptions(repositories)}
