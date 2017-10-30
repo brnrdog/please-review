@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-const styles = require('./styles');
+const styles = require('./styles.module.css');
 
 export interface AvatarProps {
   url: string;

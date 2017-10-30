@@ -12,7 +12,7 @@ export default ({ onCreateReviewRequest, pullRequest }) => (
       <RepositorySelect />
     </div>
     <div
-      style={{ borderTop: '1px solid #d8d8d8'}}
+      style={{ borderTop: '1px solid #e7ebf3'}}
       className="card-header">
       Select a Pull Request:
     </div>

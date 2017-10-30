@@ -1,0 +1,41 @@
+$primary: #4179ec;
+$secondary: #c0c7ce;
+$body-bg: #4d5765;
+$yiq-text-dark: #4d5765;
+$dark: #4d5765;
+$green: #90c79d;
+$red: #e47f89;
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  background: #f0f2f3;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+
+
+.card {
+  border: 0;
+  box-shadow: 0 .5em 1em #ddd;
+}
+
+.card-header {
+  background: #fff;
+  color: #4d5766;
+  font-weight: 600;
+}
+
+.card-footer,
+.card-header,
+.card-body,
+.list-group-item {
+  border-color: #e7ebf3 !important;
+}
+
+.card-footer {
+  background: #f4f6fb;
+}

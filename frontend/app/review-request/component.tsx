@@ -4,7 +4,6 @@ import {
   GitCommitIcon,
   DiffAddedIcon,
   DiffRemovedIcon,
-  GitPullRequestIcon,
   EyeIcon
 } from 'react-octicons'
 import * as numeral from 'numeral';
@@ -12,7 +11,7 @@ import * as numeral from 'numeral';
 import Avatar from '../avatar/component';
 import ConfirmButton from '../confirm-button/component';
 
-const styles = require('./styles');
+const styles = require('./styles.module.css');
 
 export interface IProps {
   reviewRequest: typeof ReviewRequest;
@@ -33,7 +32,6 @@ const mapReviewersToLinks = rs => rs.map(r => (
 export default ({ reviewRequest, onCloseReviewRequest }: IProps) => (
   <div className="card mb-4">
     <div className="card-header">
-      <GitPullRequestIcon />
       {reviewRequest.title}
     </div>
     <ul className="list-group list-group-flush">
