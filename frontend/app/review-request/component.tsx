@@ -129,17 +129,16 @@ export default ({ reviewRequest, onCloseReviewRequest }: IProps) => (
                 Repository Languages
               </label>
               <span>
-                {reviewRequest.languages}
-              </span>
-            </div>
-          </div>
-          <div className="col-auto">
-            <div className={styles['data-group']}>
-              <label className={`text-muted`}>
-                Reviewed by
-              </label>
-              <span>
-                {mapReviewersToLinks(reviewRequest.reviewers || [])}
+                {reviewRequest.languages.split(',').map((language, index) => {
+                  const type = index < 3 ? 'primary' : 'secondary'
+                  const classes = `badge badge-pill badge-${type}`;
+
+                  return (
+                    <span className={`${styles['language']} ${classes}`}>
+                      {language}
+                    </span>
+                  );
+                  })}
               </span>
             </div>
           </div>
@@ -155,9 +154,13 @@ export default ({ reviewRequest, onCloseReviewRequest }: IProps) => (
       >
         Close Review Request
       </ConfirmButton>
-      <button className="btn btn-primary btn-sm">
+      <a
+        href={reviewRequest.reviewUrl}
+        target="_blank"
+        className="btn btn-primary btn-sm"
+      >
         Review Pull Request
-      </button>
+      </a>
     </div>
   </div>
 )

@@ -19,8 +19,13 @@
 }
 
 .data-group span {
-  display: block;
   font-size: .75rem;
+}
+
+span.language {
+  display: inline-block;
+  font-size: .5em;
+  margin-right: .5em;
 }
 
 .reviewer-link {

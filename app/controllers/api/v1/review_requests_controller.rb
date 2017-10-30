@@ -5,6 +5,7 @@ class Api::V1::ReviewRequestsController < ApplicationController
   def create
     @review_request = ReviewRequest.create(title: pull_request.title) do |r|
       repo = pull_request.head.repo
+      r.review_url = "#{pull_request.html_url}/files"
       r.additions = pull_request.additions
       r.deletions = pull_request.deletions
       r.commits = pull_request.commits
@@ -13,6 +14,7 @@ class Api::V1::ReviewRequestsController < ApplicationController
       r.reviews = pull_request.review_comments
       r.changed_files = pull_request.changed_files
       r.languages = client.languages(repo.full_name).to_attrs.keys.join(', ')
+      r.status = 'open'
       r.user = current_user
     end
     render json: @review_request.to_camel_case_json(include: :user)

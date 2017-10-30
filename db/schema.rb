@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028160014) do
+ActiveRecord::Schema.define(version: 20171030033143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171028160014) do
     t.integer "changed_files"
     t.string "languages"
     t.integer "status"
+    t.string "review_url"
     t.index ["user_id"], name: "index_review_requests_on_user_id"
   end
 
